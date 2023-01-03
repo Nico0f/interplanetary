@@ -2,7 +2,10 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
-import { useState } from 'react'
+import planets from '../styles/Planets.module.css'
+import trajectory from '../styles/Trajectory.module.css'
+import asteroids from '../styles/Asteroids.module.css'
+import { useState, useRef } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,40 +15,65 @@ export default function Home() {
 
   return (
     <>
+    <div>
+      <p>filters</p>
+      <select>PLANET</select>
+    </div>
     <div className={styles.main}>
-      <div className={styles.sun}>
-        {/* <div className={styles.trajectory_ven_land}></div> */}
-        <div className={styles.trajectory_ven_orb}></div>
-        <div className={styles.mercury}>
-        <div className={styles.mercury_orbit}></div>
+      <div className={planets.sun}>
+        {/* <div className={trajectory.mercury_orb}></div> */}
+        {/* <div className={trajectory.venus_flyby}></div> */}
+        {/* <div className={trajectory.venus_land}></div> */}
+        {/* <div className={trajectory.venus_orb}></div> */}
+        {/* <div className={trajectory.venus_orb_land}></div> */}
+        {/* <div className={trajectory.mars_flyby}></div> */}
+        {/* <div className={trajectory.mars_land}></div> */}
+        {/* <div className={trajectory.mars_orb}></div> */}
+        {/* <div className={trajectory.mars_orb_land}></div> */}
+        {/* <div className={trajectory.jupiter_flyby}></div> */}
+        {/* <div className={trajectory.venus_vega_halley}></div> */}
+        {/* <div className={trajectory.venus_vega_land}></div> */}
+        {/* <div className={trajectory.mariner10_mercury_orb}></div> */}
+        {/* <div className={trajectory.mariner10_ven_to_mer}></div> */}
+        <div className={trajectory.pioneer11_jupiter_flyby}></div>
+        <div className={trajectory.pioneer11_saturn_flyby}></div>
+
+
+
+        <div className={planets.mercury}>
+        <div className={planets.mercury_orbit}></div>
+        {/* <div className={planets.mercury_orbit_full}></div> */}
         </div>
-        <div className={styles.venus}>
-        <p className={styles.hide}>Venus</p>
-        {/* <div className={styles.venus_orbit}></div> */}
-        <div className={styles.venus_orbit_full}></div>
+        <div className={planets.venus}>
+        <p className={planets.hide}>Venus</p>
+        <div className={planets.venus_orbit}></div>
+        {/* <div className={planets.venus_orbit_full}></div> */}
         </div>
-        <div className={styles.earth}>
-          <div className={styles.earth_orbit}></div>
+        <div className={planets.earth}>
+          <div className={planets.earth_orbit}></div>
         </div>
-        <div className={styles.mars} onMouseEnter={() => setPlanetInfo(true)} onMouseLeave={() => setPlanetInfo(false)}>
+        <div className={planets.mars} onMouseEnter={() => setPlanetInfo(true)} onMouseLeave={() => setPlanetInfo(false)}>
           {planetInfo ? <p>Mars</p> : null}
-          <div className={styles.mars_orbit}></div>
+          <div className={planets.mars_orbit}></div>
+          {/* <div className={planets.mars_orbit_full}></div> */}
         </div>
-        <div className={styles.jupiter}>
-          <div className={styles.jupiter_orbit}></div>
+        <div className={planets.jupiter}>
+          <div className={planets.jupiter_orbit}></div>
+          {/* <div className={planets.jupiter_orbit_full}></div> */}
         </div>
-        <div className={styles.saturn}>
-          <div className={styles.saturn_orbit}></div>
+        <div className={planets.saturn}>
+          <div className={planets.saturn_orbit}></div>
         </div>
-        <div className={styles.uranus}>
-          <div className={styles.uranus_orbit}></div>
+        <div className={planets.uranus}>
+          <div className={planets.uranus_orbit}></div>
         </div>
-        <div className={styles.neptune}>
-          <div className={styles.neptune_orbit}></div>
+        <div className={planets.neptune}>
+          <div className={planets.neptune_orbit}></div>
         </div>
-        <div className={styles.pluto}>
-          <div className={styles.pluto_orbit}></div>
+        <div className={planets.pluto}>
+          <div className={planets.pluto_orbit}></div>
         </div>
+        <div className={asteroids.halley}></div>
       </div>
     </div>
     </>
