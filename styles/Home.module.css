@@ -6,6 +6,37 @@
   display: none;
 }
 
+.upper {
+  display: flex;
+}
+
+.filters {
+  width: fit-content;
+  color: white;
+}
+
+.select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px #060d4b;
+  margin: 10px;
+}
+
+.selected {
+    background-color: rgb(255, 244, 182);
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid 1px #060d4b;
+    margin: 10px;
+}
+
+.filter_divs {
+  border: solid white 1px;
+}
+
 /* Tablet and Smaller Desktop
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
