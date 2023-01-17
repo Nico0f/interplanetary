@@ -1,5 +1,6 @@
 import axios from "axios"
 import Card from "./card"
+import styles from './card.module.css'
 import { useEffect, useState } from "react"
 
 export default function Missions(props: any) {
@@ -23,7 +24,7 @@ export default function Missions(props: any) {
     return (
         <div>
             {/* @ts-ignore */}
-            <select name="missions" id="missions" onChange={handleChange}>
+            <select className={styles.customSelect} name="missions" id="missions" onChange={handleChange}>
                 {props.props.map((e: any) => (<option key={e.mission_name} value={e.mission_name}>{e.mission_name}</option>))}
                 {/* [<option value="2">asd</option>, <option value="2">Hola</option>] */}
             </select>
