@@ -16,31 +16,41 @@
     margin-right: 7px
 }
 
+.cardHeader {
+    margin: 10px;
+    display: flex;
+    align-items: center;
+}
+
 .mainDiv {
-    width: 100%;
+    z-index: 90;
 }
 
 .cardDiv {
     color: white;
     box-sizing: border-box;
-    font-family: 'Inter';
+    /* font-family: 'Inter'; */
     font-size: 10px;
-    display: flex;
+    font-weight: 200;
+    display: inline;
     margin-top: 40px;
 }
 
+.description {
+    font-size: 15px;
+    font-weight: 300;
+}
 
 .cardInfo {
     display: inline-block;
-    align-self: center;
-    margin-left: 15px
+    margin-left: 15px;
 }
 
 .cardTitle {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 10.24px;
+    font-size: 11px;
     line-height: 12px;
     letter-spacing: 0.17em;
 }
@@ -49,9 +59,9 @@
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 30px;
     line-height: 30px;
-    margin: 5px 0 19px
+    margin: 5px 0 10px
 }
 
 .link {
@@ -63,7 +73,7 @@
 
 .cardImg {
     width: 125px;
-    height: 168px;
+    height: 125px;
     object-fit: cover;
     border-radius: 9px 
     

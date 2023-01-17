@@ -17,8 +17,6 @@ export default function Home<Props>(data: any) {
   const [planetInfo, setPlanetInfo] = useState(false)
   
   const [select, setSelect] = useState('body')
-  // let info = JSON.parse(data.aa)
-  console.log(data.agen)
 
   const agency_info = data.agencies_info.map((e:any) => (
     <div>
@@ -27,6 +25,7 @@ export default function Home<Props>(data: any) {
         id="Body"
         name="Body"
         value="Body"
+        className={styles.filter_elements}
       // checked={}
       // onChange={}
       />
@@ -42,6 +41,7 @@ export default function Home<Props>(data: any) {
         id="Body"
         name="Body"
         value="Body"
+        className={styles.filter_elements}
       // checked={}
       // onChange={}
       />
@@ -57,6 +57,7 @@ export default function Home<Props>(data: any) {
         id="Body"
         name="Body"
         value="Body"
+        className={styles.filter_elements}
       // checked={}
       // onChange={}
       />
@@ -72,6 +73,7 @@ export default function Home<Props>(data: any) {
         id="Body"
         name="Body"
         value="Body"
+        className={styles.filter_elements}
       // checked={}
       // onChange={}
       />
@@ -87,6 +89,7 @@ export default function Home<Props>(data: any) {
         id="Body"
         name="Body"
         value="Body"
+        className={styles.filter_elements}
       // checked={}
       // onChange={}
       />
@@ -165,19 +168,19 @@ export default function Home<Props>(data: any) {
         </div> */}
         <div className={styles.filters}>
           <div className={select === 'body' ? styles.selected : styles.select} onClick={() => setSelect('body')}>
-            <h3 style={{fontWeight: 300, margin: 5, marginRight: 15}}>Planet / Asteroid / Comet</h3><h3>{'>'}</h3>
+            <h3 style={{fontWeight: 300, margin: 5, marginRight: 50, fontSize: 24}}>Planet / Asteroid / Comet</h3><h3>{'>'}</h3>
           </div>
           <div className={select === 'agency' ? styles.selected : styles.select} onClick={() => setSelect('agency')}>
-            <h3 style={{fontWeight: 300, margin: 5, marginRight: 15}}>Agency</h3><h3>{'>'}</h3>
+            <h3 style={{fontWeight: 300, margin: 5, marginRight: 15, fontSize: 24}}>Agency</h3><h3>{'>'}</h3>
           </div>
           <div className={select === 'launchSite' ? styles.selected : styles.select} onClick={() => setSelect('launchSite')}>
-            <h3 style={{fontWeight: 300, margin: 5, marginRight: 15}}>Launch Site</h3><h3>{'>'}</h3>
+            <h3 style={{fontWeight: 300, margin: 5, marginRight: 15, fontSize: 24}}>Launch Site</h3><h3>{'>'}</h3>
           </div>
           <div className={select === 'launchSystem' ? styles.selected : styles.select} onClick={() => setSelect('launchSystem')}>
-            <h3 style={{fontWeight: 300, margin: 5, marginRight: 15}}>Launch System</h3><h3>{'>'}</h3>
+            <h3 style={{fontWeight: 300, margin: 5, marginRight: 15, fontSize: 24}}>Launch System</h3><h3>{'>'}</h3>
           </div>
           <div className={select === 'outcome' ? styles.selected : styles.select} onClick={() => setSelect('outcome')}>
-            <h3 style={{fontWeight: 300, margin: 5, marginRight: 15}}>Outcome</h3><h3>{'>'}</h3>
+            <h3 style={{fontWeight: 300, margin: 5, marginRight: 15, fontSize: 24}}>Outcome</h3><h3>{'>'}</h3>
           </div>
         </div>
         <div className={styles.filter_divs}>
@@ -187,7 +190,7 @@ export default function Home<Props>(data: any) {
         {select === 'launchSystem' ? launchSystem_info : null}
         {select === 'outcome' ? outcomes_info : null}
         </div>
-        <div className='info'>
+        <div className={styles.info}>
           <Missions props={data.missions}/>
         </div>
     </div>

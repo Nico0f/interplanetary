@@ -8,10 +8,13 @@
 
 .upper {
   display: flex;
+  height: 300px;
+  width: 100%;
+  background-color: #02051e;
 }
 
 .filters {
-  width: fit-content;
+  width: 35%;
   color: white;
 }
 
@@ -35,7 +38,26 @@
 
 .filter_divs {
   border: solid white 1px;
+  color: white;
+  width: 25%;
+  font-size: 20px;
+  overflow-y: scroll;
+  font-weight: 200;
+  margin: 10px;
 }
+
+.filter_elements {
+  margin: 5px;
+}
+
+.info {
+  width: 40%;
+}
+
+
+
+
+
 
 /* Tablet and Smaller Desktop
 @media (min-width: 701px) and (max-width: 1120px) {

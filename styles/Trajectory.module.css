@@ -155,6 +155,7 @@
     height: 1223px;
     top: 80px;
     left: 763px;
+    z-index: -10;
 }
 
 .pioneer11_saturn_flyby {
@@ -167,4 +168,5 @@
     top: -1598px;
     left: 1225px;
     border-right-style: unset;
+    z-index: -10;
 }
