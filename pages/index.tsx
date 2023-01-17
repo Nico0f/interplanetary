@@ -19,9 +19,8 @@ export default function Home<Props>(data: any) {
   const [select, setSelect] = useState('body')
 
   const agency_info = data.agencies_info.map((e:any, i: any) => (
-    <div>
+    <div key={i}>
       <input
-        key={i}
         type="checkbox"
         id="Agencies"
         name="Agencies"
@@ -36,9 +35,8 @@ export default function Home<Props>(data: any) {
   ))
 
   const bodies_info = data.bodies_info.map((e:any, i: any) => (
-    <div>
+    <div key={i}>
       <input
-        key={i}
         type="checkbox"
         id="Body"
         name="Body"
@@ -53,9 +51,8 @@ export default function Home<Props>(data: any) {
   ))
 
   const launchSite_info = data.launchSite_info.map((e:any, i: any) => (
-    <div>
+    <div key={i}>
       <input
-        key={i}
         type="checkbox"
         id="Site"
         name="Site"
@@ -70,9 +67,8 @@ export default function Home<Props>(data: any) {
   ))
 
   const launchSystem_info = data.launchSystem_info.map((e:any, i: any) => (
-    <div>
+    <div key={i}>
       <input
-        key={i}
         type="checkbox"
         id="System"
         name="System"
@@ -87,9 +83,8 @@ export default function Home<Props>(data: any) {
   ))
 
   const outcomes_info = data.outcomes_info.map((e:any, i: any) => (
-    <div>
+    <div key={i}>
       <input
-        key={i}
         type="checkbox"
         id="Outcomes"
         name="Outcomes"
