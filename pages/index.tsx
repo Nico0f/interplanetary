@@ -18,9 +18,27 @@ export default function Home<Props>(data: any) {
   
   const [select, setSelect] = useState('body')
 
-  const agency_info = data.agencies_info.map((e:any) => (
+  const agency_info = data.agencies_info.map((e:any, i: any) => (
     <div>
       <input
+        key={i}
+        type="checkbox"
+        id="Agencies"
+        name="Agencies"
+        value="Agencies"
+        className={styles.filter_elements}
+      // checked={}
+      // onChange={}
+      />
+      <label htmlFor="Agencies">{e}</label>
+      <br />
+    </div>
+  ))
+
+  const bodies_info = data.bodies_info.map((e:any, i: any) => (
+    <div>
+      <input
+        key={i}
         type="checkbox"
         id="Body"
         name="Body"
@@ -34,66 +52,53 @@ export default function Home<Props>(data: any) {
     </div>
   ))
 
-  const bodies_info = data.bodies_info.map((e:any) => (
+  const launchSite_info = data.launchSite_info.map((e:any, i: any) => (
     <div>
       <input
+        key={i}
         type="checkbox"
-        id="Body"
-        name="Body"
-        value="Body"
+        id="Site"
+        name="Site"
+        value="Site"
         className={styles.filter_elements}
       // checked={}
       // onChange={}
       />
-      <label htmlFor="Body">{e}</label>
+      <label htmlFor="Site">{e}</label>
       <br />
     </div>
   ))
 
-  const launchSite_info = data.launchSite_info.map((e:any) => (
+  const launchSystem_info = data.launchSystem_info.map((e:any, i: any) => (
     <div>
       <input
+        key={i}
         type="checkbox"
-        id="Body"
-        name="Body"
-        value="Body"
+        id="System"
+        name="System"
+        value="System"
         className={styles.filter_elements}
       // checked={}
       // onChange={}
       />
-      <label htmlFor="Body">{e}</label>
+      <label htmlFor="System">{e}</label>
       <br />
     </div>
   ))
 
-  const launchSystem_info = data.launchSystem_info.map((e:any) => (
+  const outcomes_info = data.outcomes_info.map((e:any, i: any) => (
     <div>
       <input
+        key={i}
         type="checkbox"
-        id="Body"
-        name="Body"
-        value="Body"
+        id="Outcomes"
+        name="Outcomes"
+        value="Outcomes"
         className={styles.filter_elements}
       // checked={}
       // onChange={}
       />
-      <label htmlFor="Body">{e}</label>
-      <br />
-    </div>
-  ))
-
-  const outcomes_info = data.outcomes_info.map((e:any) => (
-    <div>
-      <input
-        type="checkbox"
-        id="Body"
-        name="Body"
-        value="Body"
-        className={styles.filter_elements}
-      // checked={}
-      // onChange={}
-      />
-      <label htmlFor="Body">{e}</label>
+      <label htmlFor="Outcomes">{e}</label>
       <br />
     </div>
   ))
