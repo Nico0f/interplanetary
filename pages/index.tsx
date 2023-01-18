@@ -204,7 +204,7 @@ export default function Home<Props>(data: any) {
         {/* <div className={trajectory.venus_land}></div> */}
         {/* <div className={trajectory.venus_orb}></div> */}
         {/* <div className={trajectory.venus_orb_land}></div> */}
-        {/* <div className={trajectory.mars_flyby}></div> */}
+        <div className={trajectory.mars_flyby}></div>
         {/* <div className={trajectory.mars_land}></div> */}
         {/* <div className={trajectory.mars_orb}></div> */}
         {/* <div className={trajectory.mars_orb_land}></div> */}
@@ -213,8 +213,8 @@ export default function Home<Props>(data: any) {
         {/* <div className={trajectory.venus_vega_land}></div> */}
         {/* <div className={trajectory.mariner10_mercury_orb}></div> */}
         {/* <div className={trajectory.mariner10_ven_to_mer}></div> */}
-        <div className={trajectory.pioneer11_jupiter_flyby}></div>
-        <div className={trajectory.pioneer11_saturn_flyby}></div>
+        {/* <div className={trajectory.pioneer11_jupiter_flyby}></div> */}
+        {/* <div className={trajectory.pioneer11_saturn_flyby}></div> */}
 
 
 
@@ -223,7 +223,7 @@ export default function Home<Props>(data: any) {
         {/* <div className={planets.mercury_orbit_full}></div> */}
         </div>
         <div className={planets.venus}>
-        <p className={planets.hide}>Venus</p>
+        {/* <p className={planets.hide}>Venus</p> */}
         <div className={planets.venus_orbit}></div>
         {/* <div className={planets.venus_orbit_full}></div> */}
         </div>
