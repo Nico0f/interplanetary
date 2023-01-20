@@ -118,7 +118,7 @@ export default function Home<Props>(data: any) {
   return (
     <>
     <nav className={styles.nav}>
-    <img style={{margin: "4px"}} src="https://res.cloudinary.com/dgcsnhguo/image/upload/c_scale,h_50/v1673928116/Interplanetary/Interplanetary_images/logo/logo_jwkua5.png" alt="logo" />
+    <img style={{margin: "4px", width: "450px"}} src="https://res.cloudinary.com/dgcsnhguo/image/upload/v1674234549/Interplanetary/Interplanetary_images/logo/logo2_xeqrit.png" alt="logo" />
     </nav>
     <div className={styles.upper}>
         {/* <div className={styles.mainSelect}>
