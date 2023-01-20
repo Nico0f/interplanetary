@@ -8,7 +8,7 @@
 
 .nav {
   height: auto;
-  background-color: rgb(255, 244, 182);
+  background-color: #708d9d;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +35,7 @@
 }
 
 .selected {
-    background-color: rgb(255, 244, 182);
+    background-color: #708d9d;
     color: black;
     display: flex;
     justify-content: space-between;
