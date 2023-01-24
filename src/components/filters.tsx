@@ -6,7 +6,7 @@ export default function Filters(props: any) {
 
     return (
         <>
-            <Stack spacing={5} direction='column' align='center'>
+            <Stack spacing={5} direction='column' align='center' w={80}>
                 <Button colorScheme='teal' size='md' width='100%' rightIcon={<ArrowForwardIcon />} justifyContent={"space-between"} onClick={() => props.setView('body')}>
                     Planet / Asteroid / Comet
                 </Button>

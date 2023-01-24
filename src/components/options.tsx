@@ -8,19 +8,19 @@ export default function Options(props: any) {
     ))
 
     const display_agencies = props.info.agencies.map((e: any) => (
-        <Checkbox name='agencies' icon={<CustomIcon />} key={e.agencyid} colorScheme='teal' defaultChecked={!props.filters.agencies.includes(e.agency)} value={e.agency} onChange={props.changeFilters}>{e.agency}</Checkbox>
+        <Checkbox name='agency' icon={<CustomIcon />} key={e.agencyid} colorScheme='teal' defaultChecked={!props.filters.agency.includes(e.agency)} value={e.agency} onChange={props.changeFilters}>{e.agency}</Checkbox>
     ))
 
     const display_location = props.info.launchsite.map((e: any) => (
-        <Checkbox name='locations' icon={<CustomIcon /> } key={e.launchlocationid} colorScheme='teal' defaultChecked={!props.filters.locations.includes(e.location)} value={e.location} onChange={props.changeFilters}>{e.location}</Checkbox>
+        <Checkbox name='location' icon={<CustomIcon /> } key={e.launchlocationid} colorScheme='teal' defaultChecked={!props.filters.location.includes(e.location)} value={e.location} onChange={props.changeFilters}>{e.location}</Checkbox>
     ))
 
     const display_launchsystem = props.info.launchsystem.map((e: any) => (
-        <Checkbox name='launchsystems' icon={<CustomIcon />}  key={e.launchsystemid} colorScheme='teal' defaultChecked={!props.filters.launchsystems.includes(e.launchsystem)} value={e.launchsystem} onChange={props.changeFilters}>{e.launchsystem}</Checkbox>
+        <Checkbox name='launchsystem' icon={<CustomIcon />}  key={e.launchsystemid} colorScheme='teal' defaultChecked={!props.filters.launchsystem.includes(e.launchsystem)} value={e.launchsystem} onChange={props.changeFilters}>{e.launchsystem}</Checkbox>
     ))
 
     const display_outcomes = props.info.outcomes.map((e: any) => (
-        <Checkbox name='outcomes' icon={<CustomIcon />}  key={e.outcomeid} colorScheme='teal' defaultChecked={!props.filters.outcomes.includes(e.outcome)} value={e.outcome} onChange={props.changeFilters}>{e.outcome}</Checkbox>
+        <Checkbox name='outcome' icon={<CustomIcon />}  key={e.outcomeid} colorScheme='teal' defaultChecked={!props.filters.outcome.includes(e.outcome)} value={e.outcome} onChange={props.changeFilters}>{e.outcome}</Checkbox>
     ))
 
     return (

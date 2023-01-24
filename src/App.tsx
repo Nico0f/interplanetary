@@ -32,18 +32,36 @@ function App() {
 
   const [filters, setFilters] = useState({
     bodies: [],
-    agencies: [],
-    locations: [],
-    launchsystems: [],
-    outcomes: []
+    agency: [],
+    location: [],
+    launchsystem: [],
+    outcome: []
   })
+
+
+  const urlGen = () => {
+    let url = 'https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?query=exclude'
+    let arr = []
+    Object.keys(filters).map((e: any) => {
+      if (filters[e].length > 0) {
+        arr.push('&' + e + '=')
+        arr.push(filters[e])
+      }
+    })
+    let query = arr.flat().map((e:any) => e.replaceAll(',', '-'))
+    return url.concat(query).replaceAll(' ', '_').replaceAll(',', '~')
+  }
+
+
 
   const changeFilters = (event: any) => {
     const { name, value } = event.target
     //@ts-ignore
     filters[name].includes(value) ? setFilters((prevState: any) => ({...prevState, [name]: prevState[name].filter((e: any) => e !== value)})) : setFilters((prevState: any) => ({...prevState, [name]: [...prevState[name], value]}))
 
-  }
+    console.log(urlGen())
+    }
+
 
   const getInfo = async () => {
     const response = await axios.get('https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?filters=info')
