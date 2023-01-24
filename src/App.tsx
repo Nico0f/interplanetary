@@ -12,6 +12,8 @@ function App() {
 
   const [view, setView] = useState('body')
 
+  const [missions, setMissions] = useState([])
+
   const [info, setInfo] = useState({
     agencies: [],
     launchsite: [],
@@ -52,15 +54,23 @@ function App() {
     return url.concat(query).replaceAll(' ', '_').replaceAll(',', '~')
   }
 
+  const missionsFilter = async () => {
+    const url = urlGen()
+    const res = await axios.get(url)
+    const data = res.data
+    setMissions(data)   
+  }
 
-
-  const changeFilters = (event: any) => {
+  const changeFilters = async (event: any) => {
     const { name, value } = event.target
     //@ts-ignore
-    filters[name].includes(value) ? setFilters((prevState: any) => ({...prevState, [name]: prevState[name].filter((e: any) => e !== value)})) : setFilters((prevState: any) => ({...prevState, [name]: [...prevState[name], value]}))
-
-    console.log(urlGen())
+    filters[name].includes(value) ? setFilters((prevState: any) => ({...prevState, [name]: prevState[name].filter((e: any) => e !== value)})) : setFilters((prevState: any) => ({...prevState, [name]: [...prevState[name], value]})) 
     }
+
+    useEffect(() => {
+      console.log('update');
+      missionsFilter()
+    },[filters])
 
 
   const getInfo = async () => {
@@ -70,8 +80,15 @@ function App() {
     setInfo((prevState) => ({ ...prevState, agencies: data.agencies, launchsite: data.locations, launchsystem: data.launchsystems, outcomes: data.outcomes, bodies: data.bodies }))
   }
 
+  const getMissions = async () => {
+    const res = await axios.get('https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?filters=missions')
+    const data = res.data
+    setMissions(data)
+}
+
   useEffect(() => {
     const data = getInfo()
+    getMissions()
   }, [])
 
   const getMission = async (event: any) => {
@@ -91,7 +108,7 @@ function App() {
           <Options view={view} info={info} changeFilters={changeFilters} filters={filters}/>
         </WrapItem>
         <WrapItem>
-          <Missioncard getMission={getMission} mission={mission} />
+          <Missioncard getMission={getMission} mission={mission} missions={missions}/>
         </WrapItem>
       </Wrap>
       <div className='image'>

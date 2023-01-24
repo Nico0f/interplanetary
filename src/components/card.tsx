@@ -6,11 +6,6 @@ import axios from 'axios'
 
 export default function Missioncard(props: any) {
 
-
-    const mis = {"0": {"mission_name": "Venera 1", "Description": "Venera 1 (\u0412\u0435\u043d\u0435\u0440\u0430-1 meaning Venus 1), was the first spacecraft to fly past Venus, as part of the Soviet Union's Venera program. Launched in February 1961, it flew past Venus on 19 May of the same year; however, radio contact with the probe was lost before the flyby, resulting in it returning no data.", "Launch_year": [1961], "Trajectory": "venus_flyby", "wiki_link": "https://en.wikipedia.org/wiki/Venera_1", "outcome": 1, "image": "https://res.cloudinary.com/dgcsnhguo/image/upload/v1673896729/Interplanetary/Interplanetary_images/venera1_lntlay.jpg", "Agency": "Soviet Space Program (CCCP)", "Launch_Location": "Baikonur 1/5, Kazakhstan, Soviet Union (USSR)", "Launch_system": "Molniya 8K78", "Celestial_body": ["Venus"]}}
-
-    const [missions, setMissions] = useState([])
-
     const [mission, setMission] = useState([{
         missionname: '',
         location: '',
@@ -20,20 +15,8 @@ export default function Missioncard(props: any) {
         image: ''
     }])
 
-    const getMissions = async () => {
-        const res = await axios.get('https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?filters=missions')
-        const data = res.data
-        setMissions(data)
-    }
-    
-    useEffect(() => {
-        getMissions()
-    }
-    , [])
-
-
         // @ts-ignore
-        const displaynames = missions.map((e:any) => (
+        const displaynames = props.missions.map((e:any) => (
             <option value={Object.keys(e)}>{Object.values(e)}</option>))
 
     return (
