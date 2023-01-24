@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import Header from './components/header'
-import { SimpleGrid, Box, Container, Wrap, WrapItem, Image } from '@chakra-ui/react'
+import { SimpleGrid, Box, Container, Wrap, WrapItem, Image, Center } from '@chakra-ui/react'
 import Filters from './components/filters'
 import Options from './components/options'
 import Missioncard from './components/card'
@@ -30,6 +30,21 @@ function App() {
     trajectory: ""
   }])
 
+  const [filters, setFilters] = useState({
+    bodies: [],
+    agencies: [],
+    locations: [],
+    launchsystems: [],
+    outcomes: []
+  })
+
+  const changeFilters = (event: any) => {
+    const { name, value } = event.target
+    //@ts-ignore
+    filters[name].includes(value) ? setFilters((prevState: any) => ({...prevState, [name]: prevState[name].filter((e: any) => e !== value)})) : setFilters((prevState: any) => ({...prevState, [name]: [...prevState[name], value]}))
+
+  }
+
   const getInfo = async () => {
     const response = await axios.get('https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?filters=info')
     const data = response.data
@@ -50,15 +65,15 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Wrap justify={"space-between"} m={2}>
+      <Wrap justify={'center'} m={2}>
         <WrapItem>
           <Filters setView={setView}/>
         </WrapItem>
         <WrapItem>
-          <Options view={view} info={info}/>
+          <Options view={view} info={info} changeFilters={changeFilters} filters={filters}/>
         </WrapItem>
         <WrapItem>
-          <Missioncard getMission={getMission} mission={mission}/>
+          <Missioncard getMission={getMission} mission={mission} />
         </WrapItem>
       </Wrap>
       <div className='image'>

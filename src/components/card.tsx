@@ -43,9 +43,9 @@ export default function Missioncard(props: any) {
                     {displaynames}  
                 </Select>
             </Stack>
-            {props.mission[0].missionname === '' ? <h1 style={{color: "white"}}>Select a mission</h1> :
-            <Card bg="none" color={"white"} w={"auto"}>
-                <CardBody>
+            {props.mission[0].missionname === '' ? <h1 style={{color: "white", fontSize: "25px"}}>Select a mission</h1> :
+            <Card bg="none" color={"white"} w={'auto'} p={0}>
+                <CardBody p={1}>
                     <Flex>
                         <Image
                             objectFit='cover'
@@ -58,13 +58,13 @@ export default function Missioncard(props: any) {
                             <Text fontSize='xs'><Icon as={ImLocation} color={"red"} />{`${props.mission[0].location}`}</Text>
 
                             <Heading size='xl'>{`${props.mission[0].missionname}`}</Heading>
-                            <Text fontSize='xs'>Agency: {`${props.mission[0].agency}`}</Text>
-                            <Text fontSize='xs'>Year /s of service: {props.mission[0].years.longValues.length === 1 ? `${props.mission[0].years.longValues}` : `${props.mission[0].years.longValues[0]} - ${props.mission[0].years.longValues[1]}`}</Text>
-                            <Text fontSize='xs'>Destination: {`${props.mission[0].bodies.stringValues[0]}`}</Text>
+                            <p style={{fontSize: '12px', marginTop: '8px'}}><b>Agency: </b>{`${props.mission[0].agency}`}</p>
+                            <p style={{fontSize: '12px', marginTop: '0'}}><b>Year /s of service: </b>{props.mission[0].years.longValues.length === 1 ? `${props.mission[0].years.longValues}` : `${props.mission[0].years.longValues[0]} - ${props.mission[0].years.longValues[1]}`}</p>
+                            <p style={{fontSize: '12px', marginTop: '0'}}><b>Destination: </b>{`${props.mission[0].bodies.stringValues[0]}`}</p>
                         </Stack>
                     </Flex>
                 </CardBody>
-                <CardFooter paddingRight={0} paddingTop={0} fontSize={14} sx={{overflowY: 'scroll'}}>
+                <CardFooter p={1} fontSize={14} sx={{overflowY: 'scroll'}}>
                     {`${props.mission[0].description}`}
                 </CardFooter>
             </Card>}
