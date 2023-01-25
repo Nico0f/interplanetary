@@ -9,7 +9,7 @@ export default function Missioncard(props: any) {
     const [mission, setMission] = useState([{
         missionname: '',
         location: '',
-        years: {longValues: [0]},
+        years: {longValues: []},
         bodies: {stringValues: []},
         description: '',
         image: ''
@@ -26,7 +26,7 @@ export default function Missioncard(props: any) {
                     {displaynames}  
                 </Select>
             </Stack>
-            {props.mission[0].missionname === '' ? <h1 style={{color: "white", fontSize: "25px"}}>Select a mission</h1> :
+            {props.mission[0].missionname === '' || props.missions.length === 0 ? <h1 style={{color: "white", fontSize: "25px"}}>Select a mission</h1> :
             <Card bg="none" color={"white"} w={'auto'} p={0}>
                 <CardBody p={1}>
                     <Flex>
