@@ -43,14 +43,17 @@ function App() {
 
   const urlGen = () => {
     let url = 'https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?query=exclude'
-    let arr = []
+    let arr: Array<string> = []
     Object.keys(filters).map((e: any) => {
+      //@ts-ignore
       if (filters[e].length > 0) {
         arr.push('&' + e + '=')
+        //@ts-ignore
         arr.push(filters[e])
       }
     })
-    let query = arr.flat().map((e:any) => e.replaceAll(',', '-'))
+    let query: Array<string> = arr.flat().map((e:any) => e.replaceAll(',', '-'))
+    //@ts-ignore
     return url.concat(query).replaceAll(' ', '_').replaceAll(',', '~')
   }
 
