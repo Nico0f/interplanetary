@@ -2,7 +2,7 @@ import { border, Checkbox, Container, Stack } from '@chakra-ui/react'
 import CustomIcon from './icon'
 import { OptionsProps } from '../interfaces/interfaces'
 
-export default function Options({ view, info, filters, changeFilters }: OptionsProps, props: any) {
+export default function Options({ view, info, filters, changeFilters }: OptionsProps) {
 
     const display_bodies = info.bodies.map((e: any) => (
         <Checkbox name='bodies' icon={<CustomIcon />} key={e} colorScheme='teal' defaultChecked={!filters.bodies.includes(e)} value={e} onChange={changeFilters}>{e}</Checkbox>
