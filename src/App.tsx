@@ -7,14 +7,27 @@ import Filters from './components/filters'
 import Options from './components/options'
 import Missioncard from './components/card'
 import axios from 'axios'
+import { Mission, Filter, Info, Missions } from '../src/interfaces/interfaces'
+
+export interface CardProps {
+  mission: Mission,
+  missions: Missions,
+  getMission: any
+} 
+
+export interface FiltersProps {
+  setView: any
+}
 
 function App() {
 
-  const [view, setView] = useState('body')
+  const [view, setView] = useState<String>('body')
 
-  const [missions, setMissions] = useState([])
+  const [missions, setMissions] = useState<Mission[]>([])
 
-  const [info, setInfo] = useState({
+
+
+  const [info, setInfo] = useState<Info>({
     agencies: [],
     launchsite: [],
     launchsystem: [],
@@ -22,17 +35,20 @@ function App() {
     bodies: []
   })
 
-  const [mission, setMission] = useState([{
+  const [mission, setMission] = useState<Mission>({
     missionname: '',
     location: '',
     years: { longValues: [0] },
-    bodies: { stringValues: [] },
+    bodies: {
+      stringValues: []
+    },
     description: '',
+    agency: '',
     image: '',
-    trajectory: ""
-  }])
+    trajectory: ''
+  })
 
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<Filter>({
     bodies: [],
     agency: [],
     location: [],
@@ -71,7 +87,6 @@ function App() {
     }
 
     useEffect(() => {
-      console.log('update');
       missionsFilter()
     },[filters])
 
@@ -85,7 +100,7 @@ function App() {
 
   const getMissions = async () => {
     const res = await axios.get('https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?filters=missions')
-    const data = res.data
+    const data: Missions = res.data
     setMissions(data)
 }
 
@@ -96,8 +111,12 @@ function App() {
 
   const getMission = async (event: any) => {
     const res = await axios.get(`https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?mission=${event.target.value}`)
-    const data = res.data
+    const data = res.data[0]
     setMission(data)
+  }
+
+  interface SetView {
+    setView: React.Dispatch<React.SetStateAction<String>>;
   }
 
   return (
@@ -116,7 +135,7 @@ function App() {
       </Wrap>
       <div className='image'>
       <Image src='https://res.cloudinary.com/dgcsnhguo/image/upload/v1674455192/Interplanetary/Solar%20System/SOLARSYSTEM_nncmgi.png' alt='SolarSystem' />
-      <Image className='trajectory' src={`${mission[0].trajectory}`} alt='trajectoy'/>
+      {mission?.trajectory ? <Image className='trajectory' src={`${mission.trajectory}`} alt='trajectoy'/> : null}
 
       </div>
     </div>
