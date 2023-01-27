@@ -14,8 +14,8 @@ export default function Missioncard({ mission, missions, getMission }: CardProps
     return (
         <Container>
             <Center>
-            <Stack w={350}>
-                <Select variant='filled' placeholder='Select mission' size='sm' onChange={getMission} maxH={'200px'}>
+            <Stack w={325}>
+                <Select variant='filled' placeholder='Select mission' size='sm' onChange={getMission}>
                     {displaynames}  
                 </Select>
             </Stack>
