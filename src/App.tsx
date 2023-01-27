@@ -64,7 +64,6 @@ function App() {
 
   const missionsFilter = async () => {
     const url = urlGen()
-    console.log(url)
     const res = await axios.get(url)
     const data = res.data
     setMissions(data)   
