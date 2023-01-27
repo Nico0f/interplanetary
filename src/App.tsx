@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import Header from './components/header'
@@ -9,21 +9,11 @@ import Missioncard from './components/card'
 import axios from 'axios'
 import { Mission, Filter, Info, Missions } from '../src/interfaces/interfaces'
 
-export interface CardProps {
-  mission: Mission,
-  missions: Missions,
-  getMission: any
-} 
-
-export interface FiltersProps {
-  setView: any
-}
-
 function App() {
 
   const [view, setView] = useState<String>('body')
 
-  const [missions, setMissions] = useState<Mission[]>([])
+  const [missions, setMissions] = useState<Missions>([])
 
 
 
@@ -58,32 +48,32 @@ function App() {
 
 
   const urlGen = () => {
-    let url = 'https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?query=exclude'
-    let arr: Array<string> = []
-    Object.keys(filters).map((e: any) => {
-      //@ts-ignore
-      if (filters[e].length > 0) {
+    let url: String = 'https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?query=exclude'
+    let arr: String[][] & String[] = []
+    Object.keys(filters).map((e: String) => {
+      if (filters[e as keyof Filter].length > 0) {
         arr.push('&' + e + '=')
-        //@ts-ignore
-        arr.push(filters[e])
+        arr.push(filters[e as keyof Filter])
       }
     })
-    let query: Array<string> = arr.flat().map((e:any) => e.replaceAll(',', '-'))
+    let query: String[] = arr.flat().map((e:any) => e.replaceAll(',', '@'))
+    console.log(query)
     //@ts-ignore
-    return url.concat(query).replaceAll(' ', '_').replaceAll(',', '~')
+    return url.concat(query).replaceAll(' ', '_').replaceAll(',', '~').replaceAll(')', '$')
   }
 
   const missionsFilter = async () => {
     const url = urlGen()
+    console.log(url)
     const res = await axios.get(url)
     const data = res.data
     setMissions(data)   
   }
 
-  const changeFilters = async (event: any) => {
+  const changeFilters = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     //@ts-ignore
-    filters[name].includes(value) ? setFilters((prevState: any) => ({...prevState, [name]: prevState[name].filter((e: any) => e !== value)})) : setFilters((prevState: any) => ({...prevState, [name]: [...prevState[name], value]})) 
+    filters[name].includes(value) ? setFilters((prevState: Filter) => ({...prevState, [name]: prevState[name].filter((e: String) => e !== value)})) : setFilters((prevState: Filter) => ({...prevState, [name]: [...prevState[name], value]})) 
     }
 
     useEffect(() => {
@@ -94,7 +84,6 @@ function App() {
   const getInfo = async () => {
     const response = await axios.get('https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?filters=info')
     const data = response.data
-    // @ts-ignore
     setInfo((prevState) => ({ ...prevState, agencies: data.agencies, launchsite: data.locations, launchsystem: data.launchsystems, outcomes: data.outcomes, bodies: data.bodies }))
   }
 
@@ -109,7 +98,7 @@ function App() {
     getMissions()
   }, [])
 
-  const getMission = async (event: any) => {
+  const getMission = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const res = await axios.get(`https://4rn65pwdsfreecqjwfyxhbd57y0pcurz.lambda-url.us-east-1.on.aws/?mission=${event.target.value}`)
     const data = res.data[0]
     setMission(data)

@@ -4,12 +4,12 @@ import { ImLocation } from "react-icons/im";
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Mission, Missions } from '../interfaces/interfaces';
-import { CardProps } from '../App';
+import { CardProps } from '../interfaces/interfaces';
 
 export default function Missioncard({ mission, missions, getMission }: CardProps) {
 
-        const displaynames = missions?.map((e:any) => (
-            <option value={Object.keys(e)}>{Object.values(e)}</option>))
+        const displaynames = missions?.map((e: Object) => (
+            <option value={Object.keys(e)} key={Object.keys(e)[0]}>{Object.values(e)}</option>))
 
     return (
         <Container>

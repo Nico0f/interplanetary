@@ -1,7 +1,8 @@
 import { Button, ButtonGroup, Stack } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { FiltersProps } from '../interfaces/interfaces'
 
-export default function Filters({ setView }: any) {
+export default function Filters({ setView }: FiltersProps) {
 
 
     return (
