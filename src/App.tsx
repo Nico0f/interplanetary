@@ -57,7 +57,6 @@ function App() {
       }
     })
     let query: String[] = arr.flat().map((e:any) => e.replaceAll(',', '@'))
-    console.log(query)
     //@ts-ignore
     return url.concat(query).replaceAll(' ', '_').replaceAll(',', '~').replaceAll(')', '$')
   }
