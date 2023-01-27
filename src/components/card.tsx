@@ -37,7 +37,7 @@ export default function Missioncard({ mission, missions, getMission }: CardProps
                             <Heading size='xl'>{`${mission.missionname}`}</Heading>
                             <p style={{fontSize: '12px', marginTop: '8px'}}><b>Agency: </b>{`${mission.agency}`}</p>
                             <p style={{fontSize: '12px', marginTop: '0'}}><b>Year /s of service: </b>{mission.years.longValues.length === 1 ? `${mission.years.longValues}` : `${mission.years.longValues[0]} - ${mission.years.longValues[1]}`}</p>
-                            <p style={{fontSize: '12px', marginTop: '0'}}><b>Destination: </b>{`${mission.bodies.stringValues[0]}`}</p>
+                            <p style={{fontSize: '12px', marginTop: '0'}}><b>Destination: </b>{mission.bodies.stringValues.length === 1 ? `${mission.bodies.stringValues[0]}` : mission.bodies.stringValues.map((e:any, i) => i <= mission.bodies.stringValues.length -2 ? e + ', ' : e)}</p>
                         </Stack>
                     </Flex>
                 </CardBody>
