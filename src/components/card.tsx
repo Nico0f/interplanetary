@@ -1,4 +1,4 @@
-import { Card, Image, Stack, CardBody, Heading, Text, CardFooter, Button, Flex, Container, Box, Select } from '@chakra-ui/react'
+import { Card, Center, Image, Stack, CardBody, Heading, Text, CardFooter, Button, Flex, Container, Box, Select } from '@chakra-ui/react'
 import { Icon } from '@chakra-ui/icons'
 import { ImLocation } from "react-icons/im";
 import { useEffect, useState } from 'react'
@@ -13,11 +13,13 @@ export default function Missioncard({ mission, missions, getMission }: CardProps
 
     return (
         <Container>
-            <Stack>
-                <Select variant='filled' placeholder='Select mission' size='sm' onChange={getMission}>
+            <Center>
+            <Stack w={350}>
+                <Select variant='filled' placeholder='Select mission' size='sm' onChange={getMission} maxH={'200px'}>
                     {displaynames}  
                 </Select>
             </Stack>
+            </Center>
             {mission.missionname === '' || missions?.length === 0  || (!mission.years) ? <h1 style={{color: "white", fontSize: "25px"}}>Select a mission</h1> :
             <Card bg="none" color={"white"} w={'auto'} p={0}>
                 <CardBody p={1}>
